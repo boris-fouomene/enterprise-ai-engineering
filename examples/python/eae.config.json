@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "gates": [
+    {
+      "id": "tests",
+      "command": "python",
+      "args": [
+        "-m",
+        "pytest"
+      ],
+      "timeoutMs": 120000,
+      "required": true
+    }
+  ]
+}
