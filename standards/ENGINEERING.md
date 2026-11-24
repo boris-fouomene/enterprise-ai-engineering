@@ -29,10 +29,29 @@ Normative keywords MUST and SHOULD indicate obligations and recommendations. App
 | AI-02 | MUST maintain bounded engineering loops and report tool/model, checks and limitations when relevant. | Task evidence |
 | ETH-01 | MUST respect intellectual property, privacy, applicable law and approved use of data. | License/privacy review |
 
+| REQ-01 | MUST define acceptance criteria, constraints and measurable quality attributes before implementation. | Requirements review |
+| ARCH-02 | MUST document significant tradeoffs, failure modes and integration contracts. | ADR and design review |
+| ARCH-03 | SHOULD isolate business logic from infrastructure where this improves testability and changeability. | Dependency review |
+| CODE-03 | MUST preserve behavioral contracts during refactoring and remove obsolete implementations after migration. | Regression tests |
+| API-02 | MUST define pagination, resource limits and compatibility expectations where applicable. | Contract and load tests |
+| DATA-03 | MUST classify sensitive data and define retention, deletion and recovery requirements. | Data inventory and recovery exercise |
+| DATA-04 | MUST review concurrent writes, transaction isolation and migration compatibility. | Concurrency and migration tests |
+| SEC-03 | MUST establish threat models and track remediation of identified security risks. | Threat model and risk register |
+| SEC-04 | MUST establish vulnerability reporting, triage and remediation processes. | Security policy and incident records |
+| SUP-02 | MUST review third-party code provenance and restrict build credentials. | Build configuration review |
+| REL-02 | MUST define recovery objectives and test recovery paths for critical services. | Recovery exercise |
+| OBS-02 | SHOULD define service-level indicators and objectives appropriate to the product. | Monitoring review |
+| PERF-02 | MUST test realistic workloads before claiming performance improvements. | Reproducible measurements |
+| UX-02 | MUST test keyboard access and assistive technology compatibility where applicable. | Accessibility evidence |
+| OPS-02 | MUST document ownership, deployment approvals and incident escalation. | Runbook and release records |
+| AI-03 | MUST treat retrieved content and tool outputs as untrusted instructions; restrict agent capabilities to task scope. | Agent permission and context review |
+| AI-04 | MUST verify generated dependencies, APIs and factual claims before accepting changes. | Dependency and contract review |
+| GOV-02 | MUST distinguish automated evidence, human judgment and approved exceptions in release decisions. | Review record |
+
 ## Reference baseline
 Use the applicable editions and project-specific requirements; these references do not imply certification:
 - NIST SSDF: https://csrc.nist.gov/projects/ssdf
-- OWASP ASVS: https://owasp.org/www-project-application-security-verification-standard/
+- OWASP ASVS: https://asvs.owasp.org/ (ASVS 5.0.0; web applications and services)
 - SLSA: https://slsa.dev/
 - OpenSSF Scorecard: https://scorecard.dev/
 - WCAG: https://www.w3.org/WAI/standards-guidelines/wcag/
