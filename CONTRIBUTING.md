@@ -1,0 +1,2 @@
+# Contributing
+Follow AGENTS.md and the engineering standards. Discuss architectural changes before implementation. Submit scoped changes with tests and validation evidence. Independent review and designated maintainer approval are required under the applicable project policy. Do not include proprietary code, secrets or confidential employer information. The repository maintainer controls acceptance and release.
