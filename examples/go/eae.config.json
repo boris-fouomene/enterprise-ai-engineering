@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "gates": [
+    {
+      "id": "vet",
+      "command": "go",
+      "args": [
+        "vet",
+        "./..."
+      ],
+      "timeoutMs": 120000,
+      "required": true
+    },
+    {
+      "id": "tests",
+      "command": "go",
+      "args": [
+        "test",
+        "./..."
+      ],
+      "timeoutMs": 120000,
+      "required": true
+    }
+  ]
+}
