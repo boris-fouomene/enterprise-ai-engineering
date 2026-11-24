@@ -56,3 +56,11 @@ test("loop propagates validation errors",async()=>{
 test("gate timeout is a failure",()=>{
   assert.equal(runGate({...gate,args:["-e","setInterval(()=>{},1000)"],timeoutMs:100},process.cwd()).passed,false);
 });
+
+import { parseStandards } from "../src/standards.ts";
+test("canonical catalog has unique valid standards",()=>{
+  const standards=parseStandards(readFileSync(new URL("../standards/ENGINEERING.md",import.meta.url),"utf8"));
+  assert.ok(standards.length>=40);
+  assert.throws(()=>parseStandards("| CORE-01 | MUST test | Tests |\n| CORE-01 | MUST test | Tests |"));
+  assert.throws(()=>parseStandards("empty"));
+});
