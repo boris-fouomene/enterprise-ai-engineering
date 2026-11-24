@@ -2,7 +2,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parsePolicy } from "./policy.ts";
-import { runGate } from "./gates.ts";
+import { evaluate } from "./engine.ts";
 import { adapters, writeNew } from "./generate.ts";
 const root=process.cwd();
 try {
@@ -20,10 +20,9 @@ try {
     case "check": {
       if (!process.argv.includes("--trust-config")) throw new Error("Review local configuration, then pass --trust-config to authorize command execution");
       const policy=parsePolicy(JSON.parse(readFileSync(resolve(root,"eae.config.json"),"utf8")));
-      if (!policy.gates.some(g=>g.required)) throw new Error("No mandatory gates configured; cannot establish validation evidence");
-      const results=policy.gates.map(g=>runGate(g,root));
-      console.log(JSON.stringify({results,passed:results.every(r=>!r.required||r.passed)},null,2));
-      if(results.some(r=>r.required&&!r.passed)) process.exitCode=1;
+      const report=evaluate(policy,root);
+      console.log(JSON.stringify(report,null,2));
+      if(!report.passed) process.exitCode=1;
       break;
     }
     case "doctor":
