@@ -18,6 +18,7 @@ try {
       break;
     }
     case "check": {
+      if (!process.argv.includes("--trust-config")) throw new Error("Review local configuration, then pass --trust-config to authorize command execution");
       const policy=parsePolicy(JSON.parse(readFileSync(resolve(root,"eae.config.json"),"utf8")));
       if (!policy.gates.some(g=>g.required)) throw new Error("No mandatory gates configured; cannot establish validation evidence");
       const results=policy.gates.map(g=>runGate(g,root));
@@ -28,6 +29,6 @@ try {
     case "doctor":
       console.log(JSON.stringify({node:process.version,platform:process.platform,root},null,2));
       break;
-    default: console.log("eae init | generate | check | doctor"); process.exitCode=2;
+    default: console.log("eae init | generate | check --trust-config | doctor"); process.exitCode=2;
   }
 } catch(error) { console.error(error instanceof Error?error.message:"Unknown error"); process.exitCode=1; }
