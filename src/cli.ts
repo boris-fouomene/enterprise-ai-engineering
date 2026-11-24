@@ -2,6 +2,7 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { parsePolicy } from "./policy.ts";
+import { parseStandards } from "./standards.ts";
 import { evaluate } from "./engine.ts";
 import { adapters, writeNew } from "./generate.ts";
 const root=process.cwd();
@@ -25,9 +26,12 @@ try {
       if(!report.passed) process.exitCode=1;
       break;
     }
+    case "standards":
+      console.log(JSON.stringify(parseStandards(readFileSync(new URL("../standards/ENGINEERING.md",import.meta.url),"utf8")),null,2));
+      break;
     case "doctor":
       console.log(JSON.stringify({node:process.version,platform:process.platform,root},null,2));
       break;
-    default: console.log("eae init | generate | check --trust-config | doctor"); process.exitCode=2;
+    default: console.log("eae init | generate | check --trust-config | standards | doctor"); process.exitCode=2;
   }
 } catch(error) { console.error(error instanceof Error?error.message:"Unknown error"); process.exitCode=1; }
