@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "gates": [
+    {
+      "id": "tests",
+      "command": "dotnet",
+      "args": [
+        "test"
+      ],
+      "timeoutMs": 120000,
+      "required": true
+    }
+  ]
+}
