@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "gates": [
+    {
+      "id": "tests",
+      "command": "node",
+      "args": [
+        "--test",
+        "tests/core.test.ts"
+      ],
+      "timeoutMs": 60000,
+      "required": true
+    }
+  ]
+}
